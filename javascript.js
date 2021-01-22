@@ -6,7 +6,7 @@ game()
 
 function game(){
     for (i=0; i<totalRoundNum;i++){
-        const playerSelection = toTitleCase(prompt("Rock Paper or Scissors?"));
+        const playerSelection = toTitleCase(prompt("Rock Paper or Scissors? Round " + (1+i)));
         const computerSelection = computerPlay();
         let result=playRound(playerSelection,computerSelection)
         if (result=="playerwin"){
@@ -35,7 +35,7 @@ function playRound(playerSelection,computerSelection){
     if (gameOutcome=="RockPaper"){console.log("You Lose! " + computerSelection + " beats " + playerSelection); 
     return "computerwin"}
 
-    else if (gameOutcome=="RockScissors"){console.log("You Win! " + computerSelection + " beats " + playerSelection);
+    else if (gameOutcome=="RockScissors"){console.log("You Win! " + playerSelection + " beats " + computerSelection);
     return "playerwin"}
 
     else if(gameOutcome=="RockRock"){console.log("It's A tie you both picked " +computerSelection);
@@ -47,10 +47,10 @@ function playRound(playerSelection,computerSelection){
     else if(gameOutcome=="PaperScissors"){console.log("You Lose! " + computerSelection + " beats " + playerSelection);
     return "computerwin"}
 
-    else if(gameOutcome=="PaperRock"){console.log("You Win! " + computerSelection + " beats " + playerSelection);
+    else if(gameOutcome=="PaperRock"){console.log("You Win! " + playerSelection + " beats " + computerSelection);
     return "playerwin"}
 
-    else if(gameOutcome=="ScissorsPaper"){console.log("You Win! " + computerSelection + " beats " + playerSelection);
+    else if(gameOutcome=="ScissorsPaper"){console.log("You Win! " + playerSelection + " beats " + computerSelection);
     return "playerwin"}
 
     else if(gameOutcome=="ScissorsScissors"){console.log("It's A tie you both picked " +computerSelection);
