@@ -10,15 +10,15 @@ function game(){
         const computerSelection = computerPlay();
         let result=playRound(playerSelection,computerSelection)
         if (result=="playerwin"){
-            playerWin=++playerWin
+            playerWin=++playerWin 
         }
-        else if(result="computerwin"){
-            computerWin=++computerWin
+        else if(result=="computerwin"){
+            computerWin=++computerWin 
         }
-        else{
-            tieGame=++tieGame
+        else if(result=="tie"){
+            tieGame=++tieGame 
         }
-
+        else{}
     }
     if(playerWin>computerWin){
         console.log("Congratulations you win! " + playerWin + " win(s) " + computerWin + "loss(es) and " + tieGame +" tie(s). Let's see if you can keep it up!");
@@ -26,9 +26,11 @@ function game(){
     if(playerWin<computerWin){
         console.log("Sorry you lose " + playerWin + " win(s) " + computerWin + " loss(es) and " + tieGame + " tie(s). Better luck next time");
     }
-    else{
-        console.log("It's a tie" + playerWin + " win(s) " + computerWin + " loss(es) and " + tieGame + " tie(s) why not play again?" );
+    else if(playerWin==computerWin){
+        console.log("It's a tie " + playerWin + " win(s) " + computerWin + " loss(es) and " + tieGame + " tie(s) why not play again?" );
     }
+    else{}
+
 }
 function playRound(playerSelection,computerSelection){
     let gameOutcome=playerSelection+computerSelection
