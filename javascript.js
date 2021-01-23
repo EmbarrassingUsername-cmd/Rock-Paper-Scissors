@@ -8,8 +8,7 @@ function game(){
     for (i=0; i<totalRoundNum;i++){
         const playerSelection = toTitleCase(prompt("Rock Paper or Scissors? Round " + (1+i)));
         const computerSelection = computerPlay();
-        let gameOutcome=playerSelection+computerSelection
-        let result=playRound(gameOutcome,playerSelection,computerSelection)
+        let result=playRound(playerSelection,computerSelection)
         
         if (result=="playerwin"){
             playerWin=++playerWin 
@@ -33,8 +32,10 @@ function game(){
     }
     else{}
 }
-function playRound(gameOutcome,playerSelection,computerSelection){
+function playRound(playerSelection,computerSelection){
+    
     const resultArray=["PaperRock","ScissorsPaper","RockScissors","PaperScissors","ScissorsRock","RockPaper","PaperPaper","ScissorsScissors","RockRock"]
+    const gameOutcome=playerSelection+computerSelection
     let i=resultArray.indexOf(gameOutcome);
     if(i<3){console.log("You Win! " + playerSelection + " beats " + computerSelection); return "playerwin"}
     else if(i<6&&i>2){console.log("You Lose! " + computerSelection + " beats " + playerSelection); return "computerwin"}
