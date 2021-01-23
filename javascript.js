@@ -9,7 +9,6 @@ function game(){
         const playerSelection = toTitleCase(prompt("Rock Paper or Scissors? Round " + (1+i)));
         const computerSelection = computerPlay();
         let result=playRound(playerSelection,computerSelection)
-        
         if (result=="playerwin"){
             playerWin=++playerWin 
         }
@@ -33,7 +32,6 @@ function game(){
     else{}
 }
 function playRound(playerSelection,computerSelection){
-    
     const resultArray=["PaperRock","ScissorsPaper","RockScissors","PaperScissors","ScissorsRock","RockPaper","PaperPaper","ScissorsScissors","RockRock"]
     const gameOutcome=playerSelection+computerSelection
     let i=resultArray.indexOf(gameOutcome);
@@ -41,8 +39,6 @@ function playRound(playerSelection,computerSelection){
     else if(i<6&&i>2){console.log("You Lose! " + computerSelection + " beats " + playerSelection); return "computerwin"}
     else if(i>5){console.log("It's A tie you both picked " +computerSelection); return "tie"} 
     }
-    
-
 function computerPlay(){
     let compChoiceArray=["Rock","Paper","Scissors"]
     return compChoiceArray[randomNumber(3)]
