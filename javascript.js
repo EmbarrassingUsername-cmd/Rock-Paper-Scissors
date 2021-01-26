@@ -28,7 +28,7 @@ function playerSelects(e){
             computerWin=0
             tieGame=0
         }
-        },1000)
+        },2000)
     } 
 function roundResult(playerSelection){
         const computerSelection = computerPlay();
@@ -61,9 +61,4 @@ function computerPlay(){
 }
 function randomNumber(x){
     return Math.floor(Math.random()*x)
-}
-function toTitleCase(x){
-    x=x.toLowerCase()
-    x=x.charAt(0).toUpperCase() +  x.slice(1)
-    return x
 }
