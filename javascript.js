@@ -1,15 +1,16 @@
 let playerWin=0,
     computerWin=0,
     tieGame=0
-    totalRoundNum=5
-game()
 
-function game(){
-    for (i=0; i<totalRoundNum;i++){
-        let playerSelection = toTitleCase(prompt("Rock Paper or Scissors? Round " + (1+i)));
-        while(["Rock","Paper","Scissors"].indexOf(playerSelection)==-1){
-           playerSelection = toTitleCase(prompt("Invalid value selected! Please re-enter Rock, Paper or Scissors"))
-        }
+const RPS=document.querySelectorAll("button")
+RPS.forEach((button)=>{
+    button.addEventListener("click",playerSelects)
+});
+function playerSelects(e){
+roundResult(`${e.target.id}`)
+}
+
+function roundResult(playerSelection){
         const computerSelection = computerPlay();
         let result=playRound(playerSelection,computerSelection)
         if (result=="playerwin"){
@@ -22,26 +23,15 @@ function game(){
             tieGame=++tieGame 
         }
         else{}
-    }
-    if(playerWin>computerWin){
-        console.log("Congratulations you win! " + playerWin + " win(s) " + computerWin + " loss(es) and " + tieGame +" tie(s). Let's see if you can keep it up!");
-    }
-    if(playerWin<computerWin){
-        console.log("Sorry you lose " + playerWin + " win(s) " + computerWin + " loss(es) and " + tieGame + " tie(s). Better luck next time");
-    }
-    else if(playerWin==computerWin){
-        console.log("It's a tie " + playerWin + " win(s) " + computerWin + " loss(es) and " + tieGame + " tie(s) why not play again?" );
-    }
-    else{}
 }
 function playRound(playerSelection,computerSelection){
     const resultArray=["PaperRock","ScissorsPaper","RockScissors","PaperScissors","ScissorsRock","RockPaper","PaperPaper","ScissorsScissors","RockRock"]
     //array ordered such that win tie and loss results are grouped so range of values checked in one if statement  
     const gameOutcome=playerSelection+computerSelection
     let resultArrayIndex=resultArray.indexOf(gameOutcome);
-    if(resultArrayIndex<3){console.log("You Win! " + playerSelection + " beats " + computerSelection); return "playerwin"}
-    else if(resultArrayIndex<6&&resultArrayIndex>2){console.log("You Lose! " + computerSelection + " beats " + playerSelection); return "computerwin"}
-    else if(resultArrayIndex>5){console.log("It's A tie you both picked " +computerSelection); return "tie"} 
+    if(resultArrayIndex<3){console.log(`You Win! ${playerSelection} beats ${computerSelection}`); return "playerwin"}
+    else if(resultArrayIndex<6&&resultArrayIndex>2){console.log(`You Lose! ${computerSelection} beats ${playerSelection}`); return "computerwin"}
+    else if(resultArrayIndex>5){console.log(`It's a tie, you both picked ${computerSelection}`); return "tie"} 
     }
 function computerPlay(){
     let compChoiceArray=["Rock","Paper","Scissors"]
