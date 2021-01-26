@@ -43,6 +43,8 @@ h4{
     width: 150px;
     height: 150px;
     background-color: antiquewhite;
+    color: rgb(255, 50, 0);
+    font-size: 20pt;
     outline: none;
     border-radius:20px;
 }

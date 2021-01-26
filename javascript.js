@@ -3,21 +3,39 @@ let playerWin=0,
     tieGame=0
 
 const RPS=document.querySelectorAll("button")
+const playerScore=document.querySelector("#player-score")
+const computerScore=document.querySelector("#computer-score")
+const resultMessage=document.querySelector("#round-result")
+
 RPS.forEach((button)=>{
     button.addEventListener("click",playerSelects)
 });
 function playerSelects(e){
-roundResult(`${e.target.id}`)
-}
-const playerScore=document.querySelector("#player-score")
-const computerScore=document.querySelector("#computer-score")
-const resultMessage=document.querySelector("#round-result")
+    roundResult(`${e.target.id}`)
+        setTimeout(function(){if(playerWin>4){
+            resultMessage.textContent=`Congratulations you win! ${playerWin} win(s) ${computerWin} loss(es) and ${tieGame} tie(s). Let's see if you can keep it up!`
+            playerScore.textContent=0
+            computerScore.textContent=0
+            playerWin=0
+            computerWin=0
+            tieGame=0
+        }
+        else if(computerWin>4){
+            resultMessage.textContent=`Sorry you lose ${playerWin} win(s) ${computerWin} loss(es) and ${tieGame} tie(s). Better luck next time`
+            playerScore.textContent=0
+            computerScore.textContent=0
+            playerWin=0
+            computerWin=0
+            tieGame=0
+        }
+        },1000)
+    } 
 function roundResult(playerSelection){
         const computerSelection = computerPlay();
         let result=playRound(playerSelection,computerSelection)
         if (result=="playerwin"){
             playerWin=++playerWin 
-            playerScore.textContent=`${playerWin}`
+            playerScore.textContent=`${playerWin}`                  
         }
         else if(result=="computerwin"){
             computerWin=++computerWin 
